@@ -1,11 +1,13 @@
 import React from 'react';
-import {useRouteMatch} from "react-router";
+import {useRouteMatch, matchPath} from "react-router";
 
 // Layout
 import FullPage from "../../layout/FullPage";
 import NavLayout from "../../layout/NavLayout";
 
+// page
 import Home from "../../page/Home";
+import PublicCollections from "../../page/PublicCollections";
 
 export const LAYOUT_TYPES = {
   "full": Symbol("Full page"),
@@ -23,7 +25,7 @@ export const routes = [
   {
     name: "歌单",
     path: "/public_collections",
-    component: () => <div>歌单</div>,
+    component: PublicCollections,
     layout: LAYOUT_TYPES.mainNav,
     children: [
       {
@@ -90,12 +92,15 @@ const layout2routeMap = (function(routes) {
  * @param props
  * @returns {*}
  */
-export function layoutPicker(props) {
-  let pathname = Object.keys(pathname2layoutMap).find(r => {
-    let match = useRouteMatch(r);
+export function layoutPicker({location}) {
+  const {pathname} = location;
+
+  let target = Object.keys(pathname2layoutMap).find(r => {
+    let match = matchPath(pathname, r);
     if(match) return match.isExact;
   });
-  const [Layout, key] = pathname2layoutMap[pathname]||[];
+
+  const [Layout, key] = pathname2layoutMap[target]||[];
 
   return Layout? <Layout routes={layout2routeMap[key]}/>:<h2>无效路由，请检查路由配置</h2>
 }
