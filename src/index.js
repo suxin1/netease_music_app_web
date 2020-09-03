@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {routes, flat} from "./app/router/index";
-console.log(flat(routes))
+
+
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

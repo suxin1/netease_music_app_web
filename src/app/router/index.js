@@ -1,4 +1,6 @@
 import React from 'react';
+import {useRouteMatch} from "react-router";
+
 // Layout
 import FullPage from "../../layout/FullPage";
 import NavLayout from "../../layout/NavLayout";
@@ -6,8 +8,8 @@ import NavLayout from "../../layout/NavLayout";
 import Home from "../../page/Home";
 
 export const LAYOUT_TYPES = {
-  "full": "full",
-  "mainNav": "mainNav"
+  "full": Symbol("Full page"),
+  "mainNav": Symbol("Page with navigation")
 };
 
 export const routes = [
@@ -15,6 +17,7 @@ export const routes = [
     name: "首页",
     path: "/",
     component: Home,
+    exact: true,
     layout: LAYOUT_TYPES.mainNav,
   },
   {
@@ -34,7 +37,7 @@ export const routes = [
 ];
 
 
-export function flat(routes, parentUri = "", result = []) {
+function flat(routes, parentUri = "", result = []) {
   for (let i = 0; i < routes.length; i++) {
     let temp = {...routes[i], path: parentUri + routes[i].path};
     delete temp.children;
@@ -47,18 +50,52 @@ export function flat(routes, parentUri = "", result = []) {
 }
 
 
-export function clssify(routes) {
+export const flatRoutes = flat(routes);
+
+// 路径到布局（layout）的映射
+export const pathname2layoutMap = (function (routes) {
   let res = {};
-  for(let key of Object.keys(LAYOUT_TYPES)) {
-    res[key] = [];
-  }
   for (let i=0;i<routes.length;i++) {
-    let item = {...routes[i]};
-    res[item.layout].push(item);
+    const {path,layout} = routes[i];
+
+    switch (layout) {
+      case LAYOUT_TYPES.mainNav: {
+        res[path] = [NavLayout, LAYOUT_TYPES.mainNav];
+        break;
+      }
+      default: {
+        res[path] = [FullPage, LAYOUT_TYPES.full];
+      }
+    }
   }
   return res;
-}
+})(flatRoutes);
 
-function routesFactory(typedRoutes) {
 
+// 布局到对应路由的映射
+const layout2routeMap = (function(routes) {
+  let map = {};
+  for (let r of routes) {
+    if(!map[r.layout]) {
+      map[r.layout] = [];
+    }
+    map[r.layout].push(r);
+  }
+  return map;
+})(flatRoutes);
+
+
+/**
+ * 根据路由选取适当的界面布局
+ * @param props
+ * @returns {*}
+ */
+export function layoutPicker(props) {
+  let pathname = Object.keys(pathname2layoutMap).find(r => {
+    let match = useRouteMatch(r);
+    if(match) return match.isExact;
+  });
+  const [Layout, key] = pathname2layoutMap[pathname]||[];
+
+  return Layout? <Layout routes={layout2routeMap[key]}/>:<h2>无效路由，请检查路由配置</h2>
 }

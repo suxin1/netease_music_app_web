@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {
   Route,
   Switch,
+  Redirect
 } from "react-router-dom";
 import {withRouter} from "react-router";
 
@@ -12,8 +13,9 @@ class FullPageLayout extends Component {
     return (
       <Switch>
         {routes.map(r => {
-          return <Route path={r.path} key={r.path}>{r.component}</Route>
+          return <Route path={r.path} key={r.path} component={r.component} exact={r.exact}/>
         })}
+        {/*<Redirect to="/home" />*/}
       </Switch>
     )
   }
@@ -28,4 +30,4 @@ class FullPageLayout extends Component {
   }
 }
 
-export default withRouter(FullPageLayout);
+export default FullPageLayout;
