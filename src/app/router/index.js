@@ -1,5 +1,5 @@
 import React from 'react';
-import {useRouteMatch} from "react-router";
+import {useRouteMatch, matchPath} from "react-router";
 
 // Layout
 import FullPage from "../../layout/FullPage";
@@ -90,12 +90,15 @@ const layout2routeMap = (function(routes) {
  * @param props
  * @returns {*}
  */
-export function layoutPicker(props) {
-  let pathname = Object.keys(pathname2layoutMap).find(r => {
-    let match = useRouteMatch(r);
+export function layoutPicker({location}) {
+  const {pathname} = location;
+
+  let target = Object.keys(pathname2layoutMap).find(r => {
+    let match = matchPath(pathname, r);
     if(match) return match.isExact;
   });
-  const [Layout, key] = pathname2layoutMap[pathname]||[];
+
+  const [Layout, key] = pathname2layoutMap[target]||[];
 
   return Layout? <Layout routes={layout2routeMap[key]}/>:<h2>无效路由，请检查路由配置</h2>
 }
