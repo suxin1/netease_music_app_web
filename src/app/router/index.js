@@ -5,7 +5,7 @@ import {useRouteMatch} from "react-router";
 import FullPage from "../../layout/FullPage";
 import NavLayout from "../../layout/NavLayout";
 
-import Home from "../../page/Home";
+import Personal from "../../page/Personal";
 
 export const LAYOUT_TYPES = {
   "full": Symbol("Full page"),
@@ -14,15 +14,15 @@ export const LAYOUT_TYPES = {
 
 export const routes = [
   {
-    name: "首页",
-    path: "/",
-    component: Home,
+    name: "我的",
+    path: "/personal",
+    component: Personal,
     exact: true,
     layout: LAYOUT_TYPES.mainNav,
   },
   {
-    name: "歌单",
-    path: "/public_collections",
+    name: "发现",
+    path: "/new",
     component: () => <div>歌单</div>,
     layout: LAYOUT_TYPES.mainNav,
     children: [

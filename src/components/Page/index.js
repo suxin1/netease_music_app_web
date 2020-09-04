@@ -3,9 +3,9 @@ import React from 'react';
 import styles from "./index.module.css";
 
 
-function Page({children}) {
+function Page({topWhiteSpace, children}) {
   return (
-    <div className={styles["page-box"]}>
+    <div className={styles["page-box"]} style={{paddingTop:topWhiteSpace?"32px":"0"}}>
       {children}
     </div>
   );

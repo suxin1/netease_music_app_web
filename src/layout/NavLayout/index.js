@@ -4,8 +4,29 @@ import {
   Switch,
   NavLink
 } from "react-router-dom";
-import {withRouter} from "react-router";
+import Navigation from "../../components/Navigation";
 
+const NAV_CONFIG = [
+    {
+      title: "我的",
+      path: "/personal",
+      icon: ""
+    },
+    {
+      title: "发现",
+      path: "/new",
+      icon: ""
+    },
+    {
+      title: "电台",
+      path: "/audio",
+      icon: ""
+    },
+    {
+      title: "视频",
+      path: "/video"
+    }
+  ]
 
 class Layout extends Component {
 
@@ -25,8 +46,7 @@ class Layout extends Component {
       <Fragment>
         {this.renderSwitch(routes)}
         <div>
-          <NavLink to="/">我的</NavLink>
-          <NavLink to="public_collections">歌单</NavLink>
+          <Navigation tabs={NAV_CONFIG}/>
         </div>
       </Fragment>
     );
