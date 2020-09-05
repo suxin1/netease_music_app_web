@@ -6,6 +6,7 @@ import FullPage from "../../layout/FullPage";
 import NavLayout from "../../layout/NavLayout";
 
 import Personal from "../../page/Personal";
+import New from "../../page/New";
 
 export const LAYOUT_TYPES = {
   "full": Symbol("Full page"),
@@ -23,7 +24,7 @@ export const routes = [
   {
     name: "发现",
     path: "/new",
-    component: () => <div>歌单</div>,
+    component: New,
     layout: LAYOUT_TYPES.mainNav,
     children: [
       {
