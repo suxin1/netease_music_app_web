@@ -20,7 +20,7 @@ const SIZE = {
   },
   auto: {
     height: "auto",
-    padding: "4px 15px",
+    padding: "0",
     fontSize: "inherit"
   }
 };
@@ -37,7 +37,8 @@ export const Button = styled.button.attrs({
   border-radius: 3px;
   border: ${props => props.border_};
   outline: 0;
-  background-color: white;
+  background-color: ${props => props.backgroundColor || "white"};
+  color: ${props => props.textColor || "black"};
   
   font-weight: 400;
   white-space: nowrap;
@@ -49,6 +50,7 @@ export const Button = styled.button.attrs({
 `;
 
 Button.propTypes = {
+  /* 按钮尺寸，默认中等（medium）大小 */
   size: PropTypes.oneOf(["small", "medium", "large"]),
   border: PropTypes.boolean,
 };
@@ -57,3 +59,5 @@ Button.defaultProps = {
   size: "medium",
   border: true,
 };
+
+export const LinkButton = Button.withComponent('a');
