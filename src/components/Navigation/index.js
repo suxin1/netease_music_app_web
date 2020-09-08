@@ -1,16 +1,16 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
 
-import styles from "./index.module.css";
+import {StyledNavLink, NavBox} from "./styled";
 
 function Index({tabs}) {
-  console.log(styles)
   return (
-    <div className={styles["nav-box"]}>
+    <NavBox>
       {tabs.map(t => {
-        return <NavLink className={styles["nav-item"]} to={t.path} key={t.path}>{t.title}</NavLink>
+        return (
+          <StyledNavLink to={t.path} key={t.path}>{t.title}</StyledNavLink>
+        );
       })}
-    </div>
+    </NavBox>
   );
 }
 

@@ -1,14 +1,22 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
-import styles from "./index.module.css";
+import styled from "styled-components";
 
+export const Page = styled.div`
+  padding: 0;
+  padding-top: ${props => props.topWhiteSpace?"45px":"0"};
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+`;
 
-function Page({topWhiteSpace, children}) {
-  return (
-    <div className={styles["page-box"]} style={{paddingTop:topWhiteSpace?"32px":"0"}}>
-      {children}
-    </div>
-  );
-}
+Page.propTypes = {
+  topWhiteSpace: PropTypes.boolean,
+};
+
+Page.defaultProps = {
+  topWhiteSpace: false,
+};
 
 export default Page;
