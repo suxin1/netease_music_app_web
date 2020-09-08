@@ -1,64 +1,49 @@
 import React from "react";
 import styled from "styled-components";
-const IconWidth = 100;
-const IconHeight = 100;
+
 
 const SIZE = {
   medium: {
     width: "50px",
-    height: "auto",
+    height: "50px",
   },
   small: {
-    width: "40px",
-    height: "auto"
+    width: "35px",
+    height: "35px"
   }
 };
 
-const IconContainer = styled.span.attrs(({size}) => {
-  const sizeConfig = SIZE[size] || SIZE["medium"];
-  return {...sizeConfig}
-})`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
 
+const IconContainer = styled.span.attrs(({size}) => {
+  const sizeConfig = SIZE[size] || SIZE.medium;
+  return {
+    ...sizeConfig
+  }
+})`
   height: ${props => props.height};
   width: ${props => props.width};
-  padding: 6px;
-  font-weight: 400;
-
-  cursor: pointer;
-`;
-
-const IconPhoto = styled.span`
   display: block;
+  position: relative;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+  &:active {
+    -webkit-mask-image:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.5)));
+  }
+  & > * {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
-const IconLabel= styled.span`
-  display: block;
-
-  font-weight: 800;
-  font-size: 14px;
-  color: #3d3d3d;
-`;
-
-
-export function Icon({children, label, onClick, ...rest}) {
+function Icon({children, ...rest}) {
   return (
-    <IconContainer onClick={onClick} {...rest}>
-      <IconPhoto>
-        {children}
-      </IconPhoto>
-      <IconLabel>
-        {label}
-      </IconLabel>
+    <IconContainer {...rest}>
+      {children}
     </IconContainer>
   )
 }
 
 export default Icon;
+
+
