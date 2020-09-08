@@ -1,5 +1,5 @@
 import React from 'react';
-import {useRouteMatch, matchPath} from "react-router";
+import {matchPath} from "react-router";
 
 // Layout
 import FullPage from "../../layout/FullPage";
