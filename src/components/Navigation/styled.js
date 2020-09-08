@@ -8,6 +8,7 @@ export const NavBox = styled.div`
   background-color: white;
   position: fixed;
   top: 0;
+  overflow: hidden;
 
   display: grid;
   grid-template-rows: 100%;
@@ -24,9 +25,15 @@ export const StyledNavLink = styled(NavLink)`
   font-weight: 600;
   color: #8d8d8d;
   text-align: center;
-  transition: all 200ms ease-in;
-  &.active {
-    font-size: 18px;
+
+  & > span {
+    display: block;
+    transition: transform 150ms linear;
+    transform-origin: center center;
+  }
+  &.active > * {
+    transform: scale(1.2) translateZ(0);
     color: black;
   }
 `;
+

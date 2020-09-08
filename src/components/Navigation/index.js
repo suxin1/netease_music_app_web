@@ -7,7 +7,7 @@ function Index({tabs}) {
     <NavBox>
       {tabs.map(t => {
         return (
-          <StyledNavLink to={t.path} key={t.path}>{t.title}</StyledNavLink>
+          <StyledNavLink to={t.path} key={t.path}><span>{t.title}</span></StyledNavLink>
         );
       })}
     </NavBox>
