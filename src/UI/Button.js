@@ -30,7 +30,7 @@ export const Button = styled.button.attrs({
 })`
   position: relative;
   display: inline-block;
-  
+
   height: ${props => SIZE[props.size].height};
   padding: ${props => SIZE[props.size].padding};
   font-size: ${props => SIZE[props.size].fontSize};
@@ -39,7 +39,7 @@ export const Button = styled.button.attrs({
   outline: 0;
   background-color: ${props => props.backgroundColor || "white"};
   color: ${props => props.textColor || "black"};
-  
+
   font-weight: 400;
   white-space: nowrap;
   text-align: center;
@@ -61,3 +61,5 @@ Button.defaultProps = {
 };
 
 export const LinkButton = Button.withComponent('a');
+
+export default Button;
