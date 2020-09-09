@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 export const Page = styled.div`
+  background: ${props => props.background};
   padding: 0;
   padding-top: ${props => props.topWhiteSpace?"45px":"0"};
   margin: 0;
@@ -12,10 +13,12 @@ export const Page = styled.div`
 `;
 
 Page.propTypes = {
+  background: PropTypes.string,
   topWhiteSpace: PropTypes.boolean,
 };
 
 Page.defaultProps = {
+  background: "white",
   topWhiteSpace: false,
 };
 

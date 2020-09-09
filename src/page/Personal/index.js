@@ -2,11 +2,12 @@ import React, {Component} from "react";
 import logo from "../../logo.svg";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import {layoutPicker} from "../../app/router";
+import Page from "../../components/Page";
 
-class Page extends Component {
+class Personal extends Component {
   render() {
     return (
-      <div>
+      <Page topWhiteSpace={true}>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
           <p>
@@ -21,9 +22,9 @@ class Page extends Component {
             Learn React
           </a>
         </header>
-      </div>
+      </Page>
     );
   }
 }
 
-export default Page;
+export default Personal;
