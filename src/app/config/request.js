@@ -10,10 +10,12 @@ const request = axios.create({
 
 request.interceptors.request.use(function (config) {
   // 请求拦截
+  return config;
 });
 
 request.interceptors.response.use(function(response) {
   // 响应拦截
+  return response;
 });
 
 export default request;
