@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import "core-js";  // polyfills
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
