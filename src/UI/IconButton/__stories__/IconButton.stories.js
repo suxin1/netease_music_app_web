@@ -1,8 +1,8 @@
 import React from "react";
-import svgIcon from "./assets/repo.svg";
+import svgIcon from "../../../stories/assets/repo.svg";
 
-import Icon from "../UI/Icon";
-import IconButton from "../UI/IconButton";
+import Icon from "../../Icon/Icon";
+import IconButton from "../IconButton";
 
 export default {
   title: "UI/IconButton",

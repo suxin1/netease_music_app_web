@@ -1,11 +1,18 @@
+/**
+ * Generic request with all the default headers required by the application.
+ */
+
 import axios from "axios";
-import apiConfig from "./api";
+import apiConfig from "../../config/api";
 
 
-const request = axios.create({
+export const request = axios.create({
   baseURL: apiConfig.baseURL,
   timeout: 10000,
-  headers: {}
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  }
 });
 
 request.interceptors.request.use(function (config) {
@@ -17,5 +24,3 @@ request.interceptors.response.use(function(response) {
   // 响应拦截
   return response;
 });
-
-export default request;

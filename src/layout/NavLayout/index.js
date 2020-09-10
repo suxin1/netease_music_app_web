@@ -4,7 +4,7 @@ import {
   Switch,
   NavLink
 } from "react-router-dom";
-import Navigation from "../../components/Navigation";
+import {Navigation} from "../../components/Navigation";
 
 const NAV_CONFIG = [
     {

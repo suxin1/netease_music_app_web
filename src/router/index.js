@@ -1,12 +1,13 @@
 import React from 'react';
+import {Redirect} from "react-router";
 import {matchPath} from "react-router";
 
 // Layout
-import FullPage from "../../layout/FullPage";
-import NavLayout from "../../layout/NavLayout";
+import FullPage from "../layout/FullPage";
+import NavLayout from "../layout/NavLayout";
 
-import Personal from "../../page/Personal";
-import New from "../../page/New";
+import {Personal} from "../page/Personal";
+import {New} from "../page/New";
 
 export const LAYOUT_TYPES = {
   "full": Symbol("Full page"),
@@ -14,6 +15,12 @@ export const LAYOUT_TYPES = {
 };
 
 export const routes = [
+  {
+    path: "/",
+    exact: true,
+    layout: LAYOUT_TYPES.full,
+    component: () => <Redirect to="/personal"/>
+  },
   {
     name: "我的",
     path: "/personal",
@@ -100,6 +107,5 @@ export function layoutPicker({location}) {
   });
 
   const [Layout, key] = pathname2layoutMap[target]||[];
-
   return Layout? <Layout routes={layout2routeMap[key]}/>:<h2>无效路由，请检查路由配置</h2>
 }
