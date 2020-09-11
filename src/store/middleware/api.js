@@ -2,6 +2,7 @@ import {normalize, schema} from "normalizr"
 import {camelizeKeys} from "humps";
 
 import {request} from "../../utilities/http";
+import {validateAsyncActionTypes} from "../utilities";
 import apiConfig from "../../config/api";
 
 // Fetches an API response and normalizes the result JSON according to schema.
@@ -41,13 +42,7 @@ export default store => next => action => {
     throw new Error("Endpoint Url must be a string");
   }
 
-  if (!Array.isArray(types) || types.length !== 3) {
-    throw new Error("Expect an Array of three action types");
-  }
-
-  if (!types.every(type => typeof type === "symbol")) {
-    throw new Error("Expect action types to be string");
-  }
+  validateAsyncActionTypes(types);
 
   const actionWith = (data) => {
     const finalAction = {...action, ...data};

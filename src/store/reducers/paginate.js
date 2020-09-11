@@ -1,13 +1,9 @@
 import union from "lodash/union";
-
+import {validateAsyncActionTypes} from "../utilities";
 
 const paginate = ({types, mapActionToKey}) => {
-  if (!Array.isArray(types) && types.length === 3) {
-    throw new Error("Expect an Array of three action types.");
-  }
-  if (!types.every(type => typeof type === "string")) {
-    throw new Error("Expect action types to be string.")
-  }
+  validateAsyncActionTypes(types);
+
   if (typeof mapActionToKey !== "function") {
     throw new Error("Expected mapActionToKey to be a function.");
   }
