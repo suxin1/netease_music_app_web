@@ -1,4 +1,4 @@
-import {normalize, schema} from "normla"
+import {normalize, schema} from "normalizr"
 import {camelizeKeys} from "humps";
 
 import {request} from "../../utilities/http";
@@ -6,17 +6,16 @@ import apiConfig from "../../config/api";
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.
-const callApi = (endpoint, config, schema) => {
+const callApi = (options, schema) => {
   // TODO Error handling
-  return request(config).then(response => {
-    response.json().then(json => {
-      if (!response.ok) {
-        return Promise.reject(json);
-      }
 
-      const camelizedJson = camelizeKeys(json);
-      return Object.assign({}, normalize(camelizedJson, schema))
-    })
+  return request(options).then(response => {
+    if (!response.status === 200 ) {
+      return Promise.reject(response.data);
+    }
+
+    const camelizedJson = camelizeKeys(response.data);
+    return Object.assign({}, normalize(camelizedJson, schema))
   })
 };
 
@@ -31,8 +30,8 @@ export default store => next => action => {
     return next(action);
   }
 
-  let {endpoint} = action;
-  const {schema, types, config} = callInfo;
+  let {endpoint} = callInfo;
+  const {schema, types, method, body, params} = callInfo;
 
   if (typeof endpoint === "function") {
     endpoint = endpoint(store.getState());
@@ -46,7 +45,7 @@ export default store => next => action => {
     throw new Error("Expect an Array of three action types");
   }
 
-  if (!types.every(type => typeof type === "string")) {
+  if (!types.every(type => typeof type === "symbol")) {
     throw new Error("Expect action types to be string");
   }
 
@@ -58,8 +57,13 @@ export default store => next => action => {
 
   const [requestType, successType, failureType] = types;
   next(actionWith({type: requestType}));
-
-  return callApi(endpoint, config, schema).then(
+  const options = {
+    url: endpoint,
+    method,
+    data: body,
+    params: params,
+  };
+  return callApi(options, schema).then(
     response => next(actionWith({
       type: successType,
       response,

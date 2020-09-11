@@ -1,6 +1,5 @@
 /* global linkState */
 import React, {Component} from "react";
-
 import logo from "../../logo.svg";
 import {Page} from "../../components/Page";
 
@@ -8,6 +7,10 @@ export class Personal extends Component {
   state = {
     warn: "",
   };
+  componentDidMount() {
+    this.props.login({phone: "13540239926", password: "ggg123456"})
+  }
+
   render() {
     return (
       <Page topWhiteSpace={true}>

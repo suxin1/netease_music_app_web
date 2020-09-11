@@ -6,7 +6,7 @@ import {matchPath} from "react-router";
 import FullPage from "../layout/FullPage";
 import NavLayout from "../layout/NavLayout";
 
-import {Personal} from "../page/Personal";
+import Personal from "../page/Personal";
 import {New} from "../page/New";
 
 export const LAYOUT_TYPES = {

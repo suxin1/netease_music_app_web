@@ -7,7 +7,7 @@ import apiConfig from "../../config/api";
 
 
 export const request = axios.create({
-  baseURL: apiConfig.baseURL,
+  baseURL: apiConfig.apiRoot,
   timeout: 10000,
   headers: {
     Accept: 'application/json',
