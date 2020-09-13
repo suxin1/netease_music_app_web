@@ -1,19 +1,28 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
-import { Button } from '../Button';
+import {Button} from '../Button';
 
 export default {
   title: 'UI/Button',
   component: Button,
   argTypes: {
-    backgroundColor: { control: 'color',},
+    backgroundColor: {control: 'color',},
     textColor: {control: 'color'},
     type: {},
-    size: {}
   },
 };
 
-const Template = (args) => <Button {...args}>{"Button"}</Button>;
+const Template = (args) => {
+  return (
+    <Fragment>
+      <div>
+        <Button size="large" {...args}>{"Button"}</Button>
+        <Button size="medium" {...args}>{"Button"}</Button>
+        <Button size="small" {...args}>{"Button"}</Button>
+      </div>
+    </Fragment>
+  )
+};
 
 export const Primary = Template.bind({});
 Primary.args = {
@@ -24,7 +33,9 @@ Primary.args = {
 
 export const Secondary = Template.bind({});
 Secondary.args = {
+  type: "secondary",
   label: 'Button',
+  border: true,
 };
 
 export const Large = Template.bind({});

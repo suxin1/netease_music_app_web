@@ -1,6 +1,9 @@
 const navigationBarHeight = "45px";
 
 
-export const ui = {
+export const uiConfigure = {
   navigationBarHeight,
+  theme: {
+    primary: "#e82303",
+  }
 };

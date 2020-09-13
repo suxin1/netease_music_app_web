@@ -7,6 +7,7 @@ import FullPage from "../layout/FullPage";
 import NavLayout from "../layout/NavLayout";
 
 import Personal from "../page/Personal";
+import Login from "../page/Login";
 import {New} from "../page/New";
 
 export const LAYOUT_TYPES = {
@@ -20,6 +21,12 @@ export const routes = [
     exact: true,
     layout: LAYOUT_TYPES.full,
     component: () => <Redirect to="/personal"/>
+  },
+  {
+    path: "/login",
+    exact: true,
+    layout: LAYOUT_TYPES.full,
+    component: Login,
   },
   {
     name: "我的",

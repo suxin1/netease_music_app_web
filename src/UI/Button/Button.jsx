@@ -25,20 +25,35 @@ const SIZE = {
   }
 };
 
-export const Button = styled.button.attrs({
-  border_: props => props.border ? `1px ${props.borderType ? props.borderType : "solid"} #9d9d9d` : "0"
+const TYPE = {
+  primary: {
+    backgroundColor: "#e60025",
+    color: "white",
+  },
+  secondary: {
+    backgroundColor: "white",
+    color: "black"
+  },
+};
+
+export const Button = styled.button.attrs((props) => {
+  return {
+      border_: props => props.border ? `1px ${props.borderType ? props.borderType : "solid"} #9d9d9d` : "0",
+      ...(SIZE[props.size]),
+      ...(TYPE[props.type])
+  };
 })`
   position: relative;
   display: inline-block;
 
-  height: ${props => SIZE[props.size].height};
-  padding: ${props => SIZE[props.size].padding};
-  font-size: ${props => SIZE[props.size].fontSize};
-  border-radius: 3px;
+  height: ${props => props.height};
+  padding: ${props => props.padding};
+  font-size: ${props => props.fontSize};
+  border-radius: ${props => parseInt(props.height)/2 + "px"};
   border: ${props => props.border_};
   outline: 0;
-  background-color: ${props => props.backgroundColor || "white"};
-  color: ${props => props.textColor || "black"};
+  background-color: ${props => props.backgroundColor};
+  color: ${props => props.color};
 
   font-weight: 400;
   white-space: nowrap;
@@ -52,12 +67,14 @@ export const Button = styled.button.attrs({
 Button.propTypes = {
   /* 按钮尺寸，默认中等（medium）大小 */
   size: PropTypes.oneOf(["small", "medium", "large"]),
+  type: PropTypes.oneOf(["primary", "secondary", "warn"]),
   border: PropTypes.boolean,
 };
 
 Button.defaultProps = {
   size: "medium",
-  border: true,
+  border: false,
+  type: "primary"
 };
 
 export const LinkButton = Button.withComponent('a');

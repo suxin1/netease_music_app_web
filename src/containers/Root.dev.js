@@ -1,7 +1,7 @@
 import React from 'react';
 import {Provider} from "react-redux";
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import {layoutPicker} from "../router";
+import {layoutPicker} from "../config/router";
 import DevTools from "./DevTools";
 import '../App.css';
 
