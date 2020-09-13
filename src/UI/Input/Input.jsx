@@ -50,6 +50,7 @@ export const RoundInput = styled(Input).attrs((props) => {
   };
 })`
   border-radius: ${props => parseInt(props.height) / 2 + "px"};
+  padding: 15px;
 `;
 
 RoundInput.PropTypes = {

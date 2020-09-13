@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {uiConfigure} from "../../config/styleConstants";
+import linkState from "linkstate";
 import {Page} from "../../components/Page";
 import {Logo} from "../../components/Logo";
 
@@ -13,6 +14,12 @@ import {
 const {theme} = uiConfigure;
 
 export class Login extends Component {
+
+  state = {
+    phone: "",
+    password: "",
+  };
+
   render() {
     return (
       <Page background={theme.primary}>
@@ -20,9 +27,9 @@ export class Login extends Component {
           <Logo/>
         </LogoContainer>
         <LoginFormContainer>
-          <LimitedInput placeholder="手机号"/>
-          <LimitedInput placeholder="密码" type="password"/>
-          <LimitedButton type="secondary">手机登陆</LimitedButton>
+          <LimitedInput placeholder="手机号" onChange={linkState(this,"phone")}/>
+          <LimitedInput placeholder="密码" type="password" onChange={linkState(this, "password")}/>
+          <LimitedButton type="secondary">登陆</LimitedButton>
         </LoginFormContainer>
       </Page>
     )

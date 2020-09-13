@@ -6,7 +6,7 @@ export const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   height: 50vh;
-  padding: 20vh 0;
+  padding: 15vh 0;
   box-sizing: border-box;
 `;
 
