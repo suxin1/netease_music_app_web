@@ -7,5 +7,6 @@ export const userPlaylists = paginate({
     USER_PLAYLIST_REQUEST,
     USER_PLAYLIST_SUCCESS,
     USER_PLAYLIST_FAIL
-  ]
+  ],
+  listKey: "playlist"
 });

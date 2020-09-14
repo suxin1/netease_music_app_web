@@ -10,6 +10,7 @@ import {Personal} from "./Personal";
 class PersonalWrapper extends Component {
   componentDidMount() {
     const {fetchUserPlaylist, auth} = this.props;
+    if(auth.authenticated && auth.data.account)
     fetchUserPlaylist({uid: auth.data.account});
   }
 
@@ -20,10 +21,14 @@ class PersonalWrapper extends Component {
 
 const mapStateToProps = state => {
   const {auth, entities, pagination: {userPlaylists}} = state;
-  const data = denormalize(userPlaylists[auth.data.account] || {playlist: []}, playlistSchemas.USER_PLAYLIST, entities);
+  const data = denormalize(
+    userPlaylists[auth.data.account] || {playlist: []},
+    playlistSchemas.USER_PLAYLIST,
+    entities
+  );
   return {
     auth,
-    data
+    selfPlaylists: data,
   }
 };
 

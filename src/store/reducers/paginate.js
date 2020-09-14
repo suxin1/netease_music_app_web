@@ -1,7 +1,7 @@
 import union from "lodash/union";
 import {validateAsyncActionTypes} from "../utilities";
 
-const paginate = ({types, mapActionToKey}) => {
+const paginate = ({types, mapActionToKey, listKey="ids"}) => {
   validateAsyncActionTypes(types);
 
   if (typeof mapActionToKey !== "function") {
@@ -12,7 +12,7 @@ const paginate = ({types, mapActionToKey}) => {
 
   const updatePagination = (state = {
     isFetching: false,
-    ids: []
+    [listKey]: [],
   }, action) => {
     switch (action.type) {
       case requestType: {

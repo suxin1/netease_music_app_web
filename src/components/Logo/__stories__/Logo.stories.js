@@ -14,6 +14,6 @@ LogoAnime.args = {
 
 
 export const LogoSize2 = (args) => <Logo {...args} />;
-LogoAnime.LogoSize2 = {
+LogoAnime.args = {
   size: "40vw"
 };

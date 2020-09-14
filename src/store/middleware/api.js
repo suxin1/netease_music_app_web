@@ -3,7 +3,7 @@ import {camelizeKeys} from "humps";
 
 import {request} from "../../utilities/http";
 import {validateAsyncActionTypes} from "../utilities";
-import apiConfig from "../../config/api";
+
 
 // Fetches an API response and normalizes the result JSON according to schema.
 // This makes every API response have the same shape, regardless of how nested it was.

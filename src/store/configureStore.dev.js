@@ -24,10 +24,11 @@ const configureStore = preloadedState => {
       DevTools.instrument()
     )
   );
+
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('./reducers', () => {
-      store.replaceReducer(rootReducer);
+    module.hot.accept('./reducers', (re) => {
+      store.replaceReducer(persistedReducer);
     })
   }
   return [store, persistStore(store)];

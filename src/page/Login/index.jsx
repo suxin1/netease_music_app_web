@@ -13,10 +13,8 @@ class LoginWrapper extends Component {
   handleLogin(params) {
     const {dispatchLogin, history} = this.props;
     dispatchLogin(params).then(res => {
-      debugger
       history.push("/personal");
     }).catch(error => {
-      debugger
     })
   }
 

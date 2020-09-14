@@ -6,8 +6,8 @@ import {uiConfigure} from "../../config/styleConstants";
 export const Page = styled.div`
   box-sizing: border-box;
   background: ${props => props.background};
-  padding: 0;
-  padding-top: ${props => props.topWhiteSpace?"45px":"0"};
+  padding: 5vw;
+  padding-top: ${props => props.topWhiteSpace?"55px":"0"};
   margin: 0;
   width: 100vw;
   overflow-y: scroll;
