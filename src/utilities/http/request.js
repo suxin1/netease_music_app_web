@@ -1,7 +1,6 @@
 /**
  * Generic request with all the default headers required by the application.
  */
-
 import axios from "axios";
 import apiConfig from "../../config/api";
 
@@ -9,6 +8,7 @@ import apiConfig from "../../config/api";
 export const request = axios.create({
   baseURL: apiConfig.apiRoot,
   timeout: 10000,
+  withCredentials: true,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

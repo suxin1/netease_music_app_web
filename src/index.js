@@ -13,11 +13,11 @@ import "core-js";  // polyfills 导入所有新特性。
 import linkState from 'linkstate'; // 事件处理与状态绑定。 linkState(statePath, [valuePath]);
 window.linkState = linkState;  // 全局使用
 
-const store = configureStore();
+const [store, persistor] = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppProd store={store} />
+    <AppProd store={store} persistor={persistor} />
   </React.StrictMode>,
   document.getElementById('root')
 );

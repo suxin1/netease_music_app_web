@@ -11,8 +11,11 @@ const callApi = (options, schema) => {
   // TODO Error handling
 
   return request(options).then(response => {
-    if (!response.status === 200 ) {
-      return Promise.reject(response.data);
+    if (!(response.status === 200)) {
+      return Promise.reject({...response.data, fromNetwork: true});
+    }
+    if (!(response.data.code === 200)) {
+      return Promise.reject({...response.data, fromApplication: true});
     }
 
     const camelizedJson = camelizeKeys(response.data);
@@ -63,9 +66,14 @@ export default store => next => action => {
       type: successType,
       response,
     })),
-    error => next(actionWith({
-      type: failureType,
-      error: error.message || `Call to ${endpoint} has failed!`,
-    }))
+    error => {
+      return Promise.reject(
+        next(actionWith({
+          type: failureType,
+          code: error.code,
+          error: error.message || `Call to ${endpoint} has failed!`,
+        }))
+      );
+    }
   )
 }

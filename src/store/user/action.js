@@ -1,5 +1,5 @@
 import {CALL_API_KEY} from "../middleware/api";
-import {Schemas} from "./schema";
+import {userSchemas} from "./schema";
 
 export const LOGIN_USER_REQUEST = Symbol("LOGIN_USER_REQUEST");
 export const LOGIN_USER_SUCCESS = Symbol("LOGIN_USER_SUCCESS");
@@ -9,7 +9,7 @@ export const login = params => ({
   [CALL_API_KEY]: {
     types: [LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL],
     endpoint: "/login/cellphone",
-    schema: Schemas.LOGIN,
+    schema: userSchemas.LOGIN,
     params: params,
     method: "GET"
   }

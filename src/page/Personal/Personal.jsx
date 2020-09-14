@@ -8,27 +8,14 @@ export class Personal extends Component {
     warn: "",
   };
   componentDidMount() {
-    this.props.login({phone: "13540239926", password: "ggg123456"})
+    // this.props.login({phone: "13540239926", password: "ggg123456"})
   }
 
   render() {
+    const {data: {playlist}} = this.props;
     return (
-      <Page topWhiteSpace={true}>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.{this.state.warn}
-          </p>
-          <input onChange={linkState(this,"warn")}/>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Page topWhiteSpace={true} background="#f8f8f8">
+
       </Page>
     );
   }

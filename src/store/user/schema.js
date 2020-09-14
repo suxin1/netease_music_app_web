@@ -1,7 +1,7 @@
 import {schema} from "normalizr";
 
 const userSchema = new schema.Entity("user", {}, {
-  idAttribute: user => user.id
+  idAttribute: user => user.id || user.userId
 });
 
 const profileSchema = new schema.Entity("profile", {
@@ -15,7 +15,7 @@ const loginSchema = new schema.Object({
   profile: profileSchema,
 });
 
-export const Schemas = {
+export const userSchemas = {
   ACCOUNT: userSchema,
   ACCOUNT_ARRAY: [userSchema],
   PROFILE: profileSchema,

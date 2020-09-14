@@ -2,7 +2,7 @@ import {validateAsyncActionTypes} from "../utilities";
 import merge from "lodash/merge";
 
 // generate reducers that cloud commonly use for an async action.
-export const responseReducer = (types, initialState = {}, successReducer) => {
+export const responseReducer = (types, initialState = {}, successReducer=()=> ({})) => {
   validateAsyncActionTypes(types);
   if(successReducer && !(typeof successReducer === "function")) {
     throw new Error("successReducer must to be a function.")
@@ -23,7 +23,11 @@ export const responseReducer = (types, initialState = {}, successReducer) => {
           successReducer(state, action.response.result)
         );
       case failureType:
-        return {...state, isFetching: false, error: action.error};
+        return {
+          ...state,
+          isFetching: false,
+          error: action.error
+        };
       default:
         return state;
     }
