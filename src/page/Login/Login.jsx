@@ -33,9 +33,9 @@ export class Login extends Component {
           <Logo />
         </LogoContainer>
         <LoginFormContainer onSubmit={this.handleSubmit}>
-          <LimitedInput placeholder="手机号" onChange={linkState(this,"phone")}/>
-          <LimitedInput placeholder="密码" type="password" onChange={linkState(this, "password")}/>
-          <LimitedButton type="secondary">登陆</LimitedButton>
+          <LimitedInput size="large" placeholder="手机号" onChange={linkState(this,"phone")}/>
+          <LimitedInput size="large" placeholder="密码" type="password" onChange={linkState(this, "password")}/>
+          <LimitedButton size="large" type="secondary">登陆</LimitedButton>
         </LoginFormContainer>
       </Page>
     )

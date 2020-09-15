@@ -5,12 +5,12 @@ export const PlaylistCardBox = styled.div`
   display: grid;
   height: 10vh;
   padding: 3px ${layout.spacing.primary};
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 8fr 2fr;
   align-items: center;
   background-color: white;
   border-radius: ${props => props.rounded?"10px":""};
   :active {
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, .1);
   }
 `;
 
@@ -25,6 +25,7 @@ export const PlaylistActionBox = styled.div`
 
 export const PlaylistImage = styled.span`
   display: block;
+  flex-shrink: 0;
   height: 60px;
   width: 60px;
   background-color: #5e5e5e;
@@ -44,6 +45,10 @@ export const PlaylistTextBox = styled.div`
 `;
 export const PlaylistName = styled.span`
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 50vw;
+  text-overflow: ellipsis;
 `;
 export const PlaylistDesc = styled.span`
   font-size: 12px;
