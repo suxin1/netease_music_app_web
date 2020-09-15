@@ -4,14 +4,14 @@ import {login} from "../../store/user/action";
 import {fetchUserPlaylist} from "../../store/playlist/action";
 import {denormalize} from "normalizr";
 import {playlistSchemas} from "../../store/playlist/schema";
-
+import {userSchemas} from "../../store/user/schema";
 import {Personal} from "./Personal";
 
 class PersonalWrapper extends Component {
   componentDidMount() {
     const {fetchUserPlaylist, auth} = this.props;
-    if(auth.authenticated && auth.data.account)
-    fetchUserPlaylist({uid: auth.data.account});
+    if(auth.account)
+    fetchUserPlaylist({uid: auth.account.id});
   }
 
   render() {
@@ -26,8 +26,26 @@ const mapStateToProps = state => {
     playlistSchemas.USER_PLAYLIST,
     entities
   );
+  const authData = denormalize(auth.data, userSchemas.LOGIN, entities);
+
+  data.likedList = [];
+  data.collectedList = [];
+  data.createdList = [];
+
+  if (data && data.playlist) {
+    for (let list of data.playlist) {
+      if (list.creator.userId === auth.data.account) {
+        if(list.specialType === 5) data.likedList.push({...list});
+        if(list.specialType === 0) data.createdList.push({...list});
+      }
+      else {
+        data.collectedList.push({...list});
+      }
+    }
+  }
+
   return {
-    auth,
+    auth: authData,
     selfPlaylists: data,
   }
 };

@@ -26,7 +26,6 @@ const paginate = ({types, mapActionToKey, listKey="ids"}) => {
           ...state,
           isFetching: false,
           ...action.response.result,
-          ids: union(state.ids),
         }
       }
       case failureType: {

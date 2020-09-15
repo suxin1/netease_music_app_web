@@ -2,15 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import styled from "styled-components";
+import {layout} from "../uiConstants";
 
 const CardContainer = styled.div`
   background-color: white;
-  border-radius: 3vw;
-  padding: 0 15px;
+  border-radius: 10px;
+  margin-bottom: ${layout.spacing.primary};
 `;
 
 const CardTitle = styled.div`
-  padding: 15px 0 10px 0;
+  padding: 15px ${layout.spacing.primary} 10px ${layout.spacing.primary};
   font-size: 13px;
   line-height: 14px;
   color: #a8a8a8;
@@ -23,7 +24,7 @@ const CardContent = styled.div`
 export function Card({children, title, ...rest}) {
   return (
     <CardContainer {...rest}>
-      <CardTitle>{title}</CardTitle>
+      {title?<CardTitle>{title}</CardTitle>:null}
       <CardContent>{children}</CardContent>
     </CardContainer>
   )
