@@ -1,68 +1,99 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 编译并运行
+编译并运行之前需[搭建开发环境](https://reactnative.cn/docs/getting-started.html)：
+```shell script
+# 安装依赖
+yarn
 
-## Available Scripts
+# 运行开发环境
+yarn start
 
-In the project directory, you can run:
+# 为生产环境构建代码
+yarn build
 
-### `yarn start`
+# 运行storybook
+yarn run storybook
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## App 技术栈
+主要技术栈:
+- React
+- React Router
+- Redux & redux-thunk & normalizr
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+语言：
+- Javascript
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Quick Start
 
-### `yarn build`
+程序结构:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+├── src
+│   ├── components
+│   ├── i18n
+│   ├── utils
+│   ├── models
+│   ├── navigation
+│   ├── screens
+│   ├── services
+│   ├── theme
+│   ├── test
+│   ├── app.tsx
+├── .storybook
+│   ├── main.js
+│   ├── preview.js
+├── README.md
+└── package.json
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ./app
+react 代码文件夹：
 
-### `yarn eject`
+```
+app
+│── components
+│── i18n
+├── models
+├── navigation
+├── screens
+├── services
+├── theme
+├── utils
+└── app.tsx
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* **./components**
+组件目录。每个组件都应该是一个文件夹，里面存放`.tsx`文件和一个`*.stories.tsx`文件。复杂组件还应该包含`*.presets.ts`（样式）和`*.props.ts`（属性类型定义）文件。 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* **./i18n**
+国际化相关文件.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* **./models**
+存放应用模型(models)。每个模型都是一个文件夹，里面包含`mobx-state-tree` 模型文件、test 文件，action和types文件。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* **./navigation**
+`react-navigation` navigators 相关文件。定义应用的导航层次结构。
 
-## Learn More
+* **./screens**
+`screen`相关文件。一个`screen`相当于一个完整的页面，占据大部分屏幕，是导航层次结构的一部分。应包含`.tsx`文件和其他支持文件`*.props.ts` `*.presets.ts`。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* **./services**
+任何与外界通信的服务(REST APIs, Push Notifications, etc.)。
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* **./theme**
+应用设计相关常量 spacing, colors, 和typography。
 
-### Code Splitting
+* **./utils**
+通用helper函数和功能性函数
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* **app.tsx** 应用入口。
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### ./storybook
+[Storybook](https://storybook.js.org/docs/react/get-started/introduction) 配置文件
 
-### Making a Progressive Web App
+### ./test
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Jest config 和 mocks,  [storyshots](https://github.com/storybooks/storybook/tree/master/addons/storyshots) 测试文件，所有组件storybook的快照。
