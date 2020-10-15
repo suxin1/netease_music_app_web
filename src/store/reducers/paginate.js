@@ -43,11 +43,11 @@ const paginate = ({ types, mapActionToKey, listKey = "ids" }) => {
   };
 
   return (state = {}, action) => {
+    const key = mapActionToKey(action);
     switch (action.type) {
       case requestType:
       case successType:
       case failureType:
-        const key = mapActionToKey(action);
         if (!(typeof key === "string" || typeof key === "number")) {
           throw new Error("Expect key to be a string or a number.");
         }

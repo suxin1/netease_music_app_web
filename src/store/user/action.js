@@ -10,7 +10,7 @@ export const login = (params) => ({
     types: [LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL],
     endpoint: "/login/cellphone",
     schema: userSchemas.LOGIN,
-    params: params,
+    params,
     method: "GET",
   },
 });

@@ -38,7 +38,7 @@ const TYPE = {
 
 export const Button = styled.button.attrs((props) => {
   return {
-    border_: (props) =>
+    border: (props) =>
       props.border
         ? `1px ${props.borderType ? props.borderType : "solid"} #9d9d9d`
         : "0",
@@ -52,8 +52,8 @@ export const Button = styled.button.attrs((props) => {
   height: ${(props) => props.height};
   padding: ${(props) => props.padding};
   font-size: ${(props) => props.fontSize};
-  border-radius: ${(props) => parseInt(props.height) / 2 + "px"};
-  border: ${(props) => props.border_};
+  border-radius: ${(props) => `${parseInt(props.height, 10) / 2}px`};
+  border: ${(props) => props.border};
   outline: 0;
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.color};

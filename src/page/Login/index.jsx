@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import { Login } from "./Login";
 import { login as loginAction } from "../../store/user/action";
-
-import { connect } from "react-redux";
 
 class LoginWrapper extends Component {
   constructor(props) {

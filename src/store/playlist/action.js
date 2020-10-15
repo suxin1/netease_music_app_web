@@ -11,7 +11,7 @@ export const fetchUserPlaylist = (params) => ({
     types: [USER_PLAYLIST_REQUEST, USER_PLAYLIST_SUCCESS, USER_PLAYLIST_FAIL],
     endpoint: "/user/playlist",
     schema: playlistSchemas.USER_PLAYLIST,
-    params: params,
+    params,
     method: "GET",
   },
 });

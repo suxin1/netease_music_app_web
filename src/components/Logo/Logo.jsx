@@ -8,7 +8,7 @@ const LogoBox = styled.div`
   max-width: 200px;
   max-height: 200px;
   //background-color: white;
-  border-radius: ${(props) => parseInt(props.size) / 4 + "px"};
+  border-radius: ${(props) => `${parseInt(props.size, 10) / 4}px`};
 `;
 
 LogoBox.propTypes = {

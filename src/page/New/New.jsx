@@ -5,7 +5,7 @@ import { Page } from "../../components/Page";
 export class New extends Component {
   render() {
     return (
-      <Page topWhiteSpace={true}>
+      <Page topWhiteSpace>
         <div className="dd">这是消息页面</div>
       </Page>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { uiConfigure } from "../../config/styleConstants";
 import linkState from "linkstate";
+
+import { uiConfigure } from "../../config/styleConstants";
 import { Page } from "../../components/Page";
 import { Logo } from "../../components/Logo";
 
@@ -14,10 +15,13 @@ import {
 const { theme } = uiConfigure;
 
 export class Login extends Component {
-  state = {
-    phone: "",
-    password: "",
-  };
+  constructor() {
+    super();
+    this.state = {
+      phone: "",
+      password: "",
+    };
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();

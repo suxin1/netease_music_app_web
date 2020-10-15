@@ -92,8 +92,8 @@ const testData = {
 
 describe("account", function () {
   it("login data", function () {
-    let normalized = normalize(testData, Schemas.LOGIN);
-    let denormalized = denormalize(
+    const normalized = normalize(testData, Schemas.LOGIN);
+    const denormalized = denormalize(
       normalized.result,
       Schemas.LOGIN,
       normalized.entities

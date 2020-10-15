@@ -27,7 +27,7 @@ export function PlaylistCardRow({
           <PlaylistDesc>{trackCount}首</PlaylistDesc>
         </PlaylistTextBox>
       </PlaylistInfoBox>
-      <PlaylistActionBox></PlaylistActionBox>
+      <PlaylistActionBox />
     </PlaylistCardBox>
   );
 }
@@ -36,4 +36,10 @@ PlaylistCardRow.propTypes = {
   coverImgUrl: PropTypes.string,
   name: PropTypes.string,
   trackCount: PropTypes.number,
+};
+
+PlaylistCardRow.defaultProps = {
+  coverImgUrl: "",
+  name: "",
+  trackCount: 0,
 };

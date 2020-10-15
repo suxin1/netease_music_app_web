@@ -1,10 +1,11 @@
 /* global linkState */
 import React, { Component } from "react";
+import styled from "styled-components";
+
 import { Page } from "../../components/Page";
 import { Card } from "../../UI/Card";
 import { PlaylistCardRow } from "../../components/PlaylistCardRow";
 import { UserCardRow } from "../../components/UserCard";
-import styled from "styled-components";
 import { layout } from "../../UI/uiConstants";
 
 const LikedPlayCard = styled(PlaylistCardRow)`
@@ -26,7 +27,7 @@ export class Personal extends Component {
       ...(auth.account || {}),
     };
     return (
-      <Page topWhiteSpace={true} background="#f8f8f8">
+      <Page topWhiteSpace background="#f8f8f8">
         <UserCardRowStyled {...userInfo} />
         {likedList.map((item) => {
           return <LikedPlayCard {...item} name="我喜欢的音乐" rounded />;

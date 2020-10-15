@@ -16,14 +16,14 @@ class FullPageLayout extends Component {
             />
           );
         })}
-        {/*<Redirect to="/home" />*/}
+        {/* <Redirect to="/home" /> */}
       </Switch>
     );
   }
 
   render() {
     const { routes } = this.props;
-    return <Fragment>{this.renderSwitch(routes)}</Fragment>;
+    return <>{this.renderSwitch(routes)}</>;
   }
 }
 

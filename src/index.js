@@ -4,13 +4,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "./assets/stylesheets/normalize.css";
 
+import linkState from "linkstate"; // 事件处理与状态绑定。 linkState(statePath, [valuePath]);
 import AppProd from "./containers/Root";
 import * as serviceWorker from "./serviceWorker";
 
 import configureStore from "./store";
 
 import "core-js"; // polyfills 导入所有新特性。
-import linkState from "linkstate"; // 事件处理与状态绑定。 linkState(statePath, [valuePath]);
+
 window.linkState = linkState; // 全局使用
 
 const [store, persistor] = configureStore();

@@ -1,5 +1,5 @@
-import { validateAsyncActionTypes } from "../utilities";
 import merge from "lodash/merge";
+import { validateAsyncActionTypes } from "../utilities";
 
 // generate reducers that cloud commonly use for an async action.
 export const responseReducer = (

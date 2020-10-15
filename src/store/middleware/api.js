@@ -18,7 +18,7 @@ const callApi = (options, schema) => {
     }
 
     const camelizedJson = camelizeKeys(response.data);
-    return Object.assign({}, normalize(camelizedJson, schema));
+    return { ...normalize(camelizedJson, schema) };
   });
 };
 
@@ -58,7 +58,7 @@ export default (store) => (next) => (action) => {
     url: endpoint,
     method,
     data: body,
-    params: params,
+    params,
   };
   return callApi(options, schema).then(
     (response) =>

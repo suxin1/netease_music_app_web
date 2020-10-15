@@ -14,19 +14,19 @@ export default {
 
 const Template = (args) => {
   return (
-    <Fragment>
+    <>
       <div>
         <Button size="large" {...args}>
-          {"Button"}
+          Button
         </Button>
         <Button size="medium" {...args}>
-          {"Button"}
+          Button
         </Button>
         <Button size="small" {...args}>
-          {"Button"}
+          Button
         </Button>
       </div>
-    </Fragment>
+    </>
   );
 };
 

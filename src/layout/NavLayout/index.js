@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Route, Switch, NavLink } from "react-router-dom";
 import { Navigation } from "../../components/Navigation";
 
@@ -45,10 +45,10 @@ class Layout extends Component {
   render() {
     const { routes } = this.props;
     return (
-      <Fragment>
+      <>
         {this.renderSwitch(routes)}
         <Navigation tabs={NAV_CONFIG} />
-      </Fragment>
+      </>
     );
   }
 }

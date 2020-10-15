@@ -1,10 +1,10 @@
-import React from 'react';
-import { Input } from '../Input';
+import React from "react";
+import { Input } from "../index";
 
 export default {
-  title: 'UI/Input',
+  title: "UI/Input",
   component: Input,
-  argTypes: {}
+  argTypes: {},
 };
 
 const Template = (args) => <Input {...args} />;

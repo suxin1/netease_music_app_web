@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {NavLink} from "react-router-dom";
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
-export class Index extends Component {
+export class PublicCollection extends Component {
   render() {
     return (
       <div>
@@ -11,3 +11,4 @@ export class Index extends Component {
   }
 }
 
+export default PublicCollection;

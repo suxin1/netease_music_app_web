@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { denormalize } from "normalizr";
+
 import { login } from "../../store/user/action";
 import { fetchUserPlaylist } from "../../store/playlist/action";
-import { denormalize } from "normalizr";
 import { playlistSchemas } from "../../store/playlist/schema";
 import { userSchemas } from "../../store/user/schema";
 import { Personal } from "./Personal";
@@ -36,7 +37,7 @@ const mapStateToProps = (state) => {
   data.createdList = [];
 
   if (data && data.playlist) {
-    for (let list of data.playlist) {
+    for (const list of data.playlist) {
       if (list.creator.userId === auth.data.account) {
         if (list.specialType === 5) data.likedList.push({ ...list });
         if (list.specialType === 0) data.createdList.push({ ...list });

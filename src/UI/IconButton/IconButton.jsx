@@ -8,13 +8,13 @@ const SIZE = {
   },
   small: {
     width: "40px",
-    height: "auto"
-  }
+    height: "auto",
+  },
 };
 
-const IconContainer = styled.span.attrs(({size}) => {
-  const sizeConfig = SIZE[size] || SIZE["medium"];
-  return {...sizeConfig}
+const IconContainer = styled.span.attrs(({ size }) => {
+  const sizeConfig = SIZE[size] || SIZE.medium;
+  return { ...sizeConfig };
 })`
   position: relative;
   display: flex;
@@ -22,15 +22,15 @@ const IconContainer = styled.span.attrs(({size}) => {
   justify-content: space-between;
   align-items: center;
 
-  height: ${props => props.height};
-  width: ${props => props.width};
+  height: ${(props) => props.height};
+  width: ${(props) => props.width};
   padding: 6px;
   font-weight: 400;
 
   cursor: pointer;
 `;
 
-const IconLabel= styled.span`
+const IconLabel = styled.span`
   display: block;
 
   font-weight: 800;
@@ -40,16 +40,13 @@ const IconLabel= styled.span`
   margin-top: 5px;
 `;
 
-
-export function Icon({icon, label, onClick, ...rest}) {
+export function Icon({ icon, label, onClick, ...rest }) {
   return (
     <IconContainer onClick={onClick} {...rest}>
       {icon}
-      <IconLabel>
-        {label}
-      </IconLabel>
+      <IconLabel>{label}</IconLabel>
     </IconContainer>
-  )
+  );
 }
 
 export default Icon;

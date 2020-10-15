@@ -53,7 +53,7 @@ export function UserCardRow({
           <NavLink to="/login">立即登录</NavLink>
         )}
       </CardInfoBox>
-      <CardActionBox></CardActionBox>
+      <CardActionBox />
     </CardBox>
   );
 }
@@ -62,4 +62,10 @@ UserCardRow.propTypes = {
   coverImgUrl: PropTypes.string,
   name: PropTypes.string,
   trackCount: PropTypes.number,
+};
+
+UserCardRow.defaultProps = {
+  coverImgUrl: "",
+  name: "",
+  trackCount: 0,
 };
