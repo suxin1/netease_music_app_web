@@ -1,5 +1,5 @@
 import { normalize, denormalize } from "normalizr";
-import { Schemas } from "../schema";
+import { userSchemas } from "../schema";
 // import {expect} from "chai";
 
 const testData = {
@@ -92,10 +92,10 @@ const testData = {
 
 describe("account", function () {
   it("login data", function () {
-    const normalized = normalize(testData, Schemas.LOGIN);
+    const normalized = normalize(testData, userSchemas.LOGIN);
     const denormalized = denormalize(
       normalized.result,
-      Schemas.LOGIN,
+      userSchemas.LOGIN,
       normalized.entities
     );
     console.log(denormalized);

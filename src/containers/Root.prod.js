@@ -11,7 +11,7 @@ function App({ store, persistor }) {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Router>
-          <Route path="*" component={layoutPicker}/>
+          <Route path="*" component={layoutPicker} />
         </Router>
       </PersistGate>
     </Provider>
