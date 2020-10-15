@@ -1,14 +1,22 @@
-import {schema} from "normalizr";
+import { schema } from "normalizr";
 
-const userSchema = new schema.Entity("user", {}, {
-  idAttribute: user => user.id || user.userId
-});
+const userSchema = new schema.Entity(
+  "user",
+  {},
+  {
+    idAttribute: (user) => user.id || user.userId,
+  }
+);
 
-const profileSchema = new schema.Entity("profile", {
-  userId: userSchema,
-}, {
-  idAttribute: profile => profile.userId
-});
+const profileSchema = new schema.Entity(
+  "profile",
+  {
+    userId: userSchema,
+  },
+  {
+    idAttribute: (profile) => profile.userId,
+  }
+);
 
 const loginSchema = new schema.Object({
   account: userSchema,

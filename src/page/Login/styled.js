@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import {RoundInput} from "../../UI/Input";
-import {Button} from "../../UI/Button";
+import { RoundInput } from "../../UI/Input";
+import { Button } from "../../UI/Button";
 
 export const LogoContainer = styled.div`
   display: flex;

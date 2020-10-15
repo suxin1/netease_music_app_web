@@ -1,9 +1,9 @@
 import React from "react";
-import {Login as CLogin} from "../Login";
+import { Login as CLogin } from "../Login";
 
 export default {
   title: "Page/login",
-  component: CLogin
+  component: CLogin,
 };
 
-export const Login = () =>  <CLogin />;
+export const Login = () => <CLogin />;

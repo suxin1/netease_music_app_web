@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {layout} from "../../UI/uiConstants";
+import { layout } from "../../UI/uiConstants";
 
 export const PlaylistCardBox = styled.div`
   display: grid;
@@ -8,9 +8,9 @@ export const PlaylistCardBox = styled.div`
   grid-template-columns: 8fr 2fr;
   align-items: center;
   background-color: white;
-  border-radius: ${props => props.rounded?"10px":""};
+  border-radius: ${(props) => (props.rounded ? "10px" : "")};
   :active {
-    background-color: rgba(0, 0, 0, .1);
+    background-color: rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -19,9 +19,7 @@ export const PlaylistInfoBox = styled.div`
   flex-direction: row;
 `;
 
-export const PlaylistActionBox = styled.div`
-
-`;
+export const PlaylistActionBox = styled.div``;
 
 export const PlaylistImage = styled.span`
   display: block;
@@ -29,7 +27,7 @@ export const PlaylistImage = styled.span`
   height: 60px;
   width: 60px;
   background-color: #5e5e5e;
-  background-image: url(${props => props.src});
+  background-image: url(${(props) => props.src});
   background-repeat: no-repeat;
   background-size: cover;
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {layout} from "../../UI/uiConstants";
+import { layout } from "../../UI/uiConstants";
 
 export const CardBox = styled.div`
   display: grid;
@@ -7,7 +7,7 @@ export const CardBox = styled.div`
   padding: 3px ${layout.spacing.primary};
   grid-template-columns: 80% 20%;
   align-items: center;
-  border-radius: ${props => props.rounded?"10px":""};
+  border-radius: ${(props) => (props.rounded ? "10px" : "")};
 `;
 
 export const CardInfoBox = styled.div`
@@ -15,16 +15,14 @@ export const CardInfoBox = styled.div`
   flex-direction: row;
 `;
 
-export const CardActionBox = styled.div`
-
-`;
+export const CardActionBox = styled.div``;
 
 export const CardImage = styled.span`
   display: block;
   height: 60px;
   width: 60px;
   background-color: #5e5e5e;
-  background-image: url(${props => props.src});
+  background-image: url(${(props) => props.src});
   background-repeat: no-repeat;
   background-size: cover;
 

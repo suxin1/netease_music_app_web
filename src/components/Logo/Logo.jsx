@@ -57,6 +57,6 @@ export class Logo extends PureComponent {
           ></path>
         </svg>
       </LogoBox>
-    )
+    );
   }
 }

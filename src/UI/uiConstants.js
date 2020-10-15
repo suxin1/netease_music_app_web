@@ -6,12 +6,12 @@ export const color = {
   secondaryLight: "#ffffff",
   secondaryDark: "#cccccc",
   textLight: "#fafafa",
-  textDark: "#000000"
+  textDark: "#000000",
 };
 
 export const layout = {
   spacing: {
     primary: "20px",
-    secondary: "10px"
+    secondary: "10px",
   },
 };

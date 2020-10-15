@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import styled from "styled-components";
-import {layout} from "../uiConstants";
+import { layout } from "../uiConstants";
 
 const CardContainer = styled.div`
   background-color: white;
@@ -21,17 +21,17 @@ const CardContent = styled.div`
   padding-bottom: 10px;
 `;
 
-export function Card({children, title, ...rest}) {
+export function Card({ children, title, ...rest }) {
   return (
     <CardContainer {...rest}>
-      {title?<CardTitle>{title}</CardTitle>:null}
+      {title ? <CardTitle>{title}</CardTitle> : null}
       <CardContent>{children}</CardContent>
     </CardContainer>
-  )
+  );
 }
 
 Card.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
 };
 
 Card.defaultProps = {

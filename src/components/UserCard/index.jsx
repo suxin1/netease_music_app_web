@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import {StyledNavLink} from "../Navigation/styled";
-import {layout} from "../../UI/uiConstants";
+import { StyledNavLink } from "../Navigation/styled";
+import { layout } from "../../UI/uiConstants";
 import {
   CardBox,
   CardImage,
@@ -25,24 +25,37 @@ const AvattarBox = styled.svg`
   padding-top: 10px;
 `;
 
-export function UserCardRow({authenticated, nickname, avatarUrl, name, trackCount, creator, ...rest}) {
+export function UserCardRow({
+  authenticated,
+  nickname,
+  avatarUrl,
+  name,
+  trackCount,
+  creator,
+  ...rest
+}) {
   return (
     <CardBox {...rest}>
       <CardInfoBox>
-        {avatarUrl?<CardImage src={avatarUrl}/>:<AvattarBox><use href="#icon-touxiang"></use></AvattarBox>}
-        {authenticated?(
+        {avatarUrl ? (
+          <CardImage src={avatarUrl} />
+        ) : (
+          <AvattarBox>
+            <use href="#icon-touxiang"></use>
+          </AvattarBox>
+        )}
+        {authenticated ? (
           <CardTextBox>
-          <CardName>{nickname}</CardName>
-          <CardSubcontent>{trackCount}</CardSubcontent>
-        </CardTextBox>
-        ):(
+            <CardName>{nickname}</CardName>
+            <CardSubcontent>{trackCount}</CardSubcontent>
+          </CardTextBox>
+        ) : (
           <NavLink to="/login">立即登录</NavLink>
         )}
       </CardInfoBox>
-      <CardActionBox>
-      </CardActionBox>
+      <CardActionBox></CardActionBox>
     </CardBox>
-  )
+  );
 }
 
 UserCardRow.propTypes = {
@@ -50,4 +63,3 @@ UserCardRow.propTypes = {
   name: PropTypes.string,
   trackCount: PropTypes.number,
 };
-

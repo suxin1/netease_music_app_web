@@ -1,14 +1,14 @@
-import {schema} from "normalizr";
-import {userSchemas} from "../user/schema";
+import { schema } from "normalizr";
+import { userSchemas } from "../user/schema";
 
 const playlistSchema = new schema.Entity(
   "playlist",
   {
     subscribers: userSchemas.ACCOUNT_ARRAY,
-    creator: userSchemas.ACCOUNT
+    creator: userSchemas.ACCOUNT,
   },
   {
-    idAttribute: item => item.id
+    idAttribute: (item) => item.id,
   }
 );
 

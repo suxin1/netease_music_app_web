@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import {StyledNavLink, NavBox} from "./styled";
+import { StyledNavLink, NavBox } from "./styled";
 
-export function Navigation({tabs}) {
+export function Navigation({ tabs }) {
   return (
     <NavBox>
-      {tabs.map(t => {
+      {tabs.map((t) => {
         return (
-          <StyledNavLink to={t.path} key={t.path}><span>{t.title}</span></StyledNavLink>
+          <StyledNavLink to={t.path} key={t.path}>
+            <span>{t.title}</span>
+          </StyledNavLink>
         );
       })}
     </NavBox>
