@@ -48,6 +48,9 @@
     "lint:style": "stylelint \"./src/**/*.css\"",
     "build-storybook": "build-storybook -s public"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "eslintConfig": {
     "extends": "react-app"
   },
