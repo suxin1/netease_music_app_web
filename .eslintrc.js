@@ -53,5 +53,6 @@ module.exports = {
         "react/no-unescaped-entities": 0,
         "react/jsx-wrap-multilines": 0,
         "class-methods-use-this": 0,
+        "jsx-a11y/media-has-caption": 0,
     }
 };
